@@ -18,7 +18,7 @@ import junit.framework.TestCase;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class OurTestExceptions extends TestCase {
+public class TestExceptions extends TestCase {
     private Cuenta cuentaPepe, cuentaAna;
     private Cliente pepe, ana;
     

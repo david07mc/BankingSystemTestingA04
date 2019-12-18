@@ -19,7 +19,7 @@ import junit.framework.TestCase;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class OurTestCards extends TestCase {
+public class TestCards extends TestCase {
     private Cuenta cuentaPepe, cuentaAna;
     private Cliente pepe, ana;
     private TarjetaDebito tdPepe, tdAna;
