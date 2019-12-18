@@ -45,6 +45,19 @@ public class TestExceptions extends TestCase {
     }
     
     @Test
+    public void testEmitirTCCliente() {
+        @SuppressWarnings("unused")
+        TarjetaCredito tcAna;
+        
+        String DNIAna = this.ana.getNif();
+        
+        try {
+            tcAna = this.cuentaAna.emitirTarjetaCredito(DNIAna, 10000);
+        } catch (Exception e) {
+            fail("Excepción inesperada " + e);
+        }
+    }
+    @Test
     public void testEmitirTCClienteNoExistente() {
         @SuppressWarnings("unused")
         TarjetaCredito tcAna;
@@ -73,15 +86,15 @@ public class TestExceptions extends TestCase {
             fail("Excepción inesperada " + e);
         }
     }
-    
+   
     @Test
-    public void testIngresarCantidadNegativa() {
+    public void testAñadirTitularCuenta() {
         try {
-            this.cuentaPepe.ingresar(-1000);
-            fail("Esperaba ImporteInvalidoException");
-        } catch (ImporteInvalidoException e) {
+        	Cliente carlos = new Cliente("23424F", "Carlos", "Gómez"); carlos.insert();
+            Cuenta cuentaCarlos = new Cuenta(3);
+            cuentaCarlos.addTitular(carlos);
         } catch (Exception e) {
-            fail("Esperaba ImporteInvalidoException");
+            fail("Excepción inesperada: " + e);
         } 
     }
     
@@ -95,6 +108,9 @@ public class TestExceptions extends TestCase {
             fail("Excepción inesperada: " + e);
         } 
     }
+    
+    
+   
     
 }
 
