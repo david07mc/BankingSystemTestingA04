@@ -6,6 +6,9 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import edu.uclm.esi.iso2.banco20193capas.exceptions.ClienteNoAutorizadoException;
+import edu.uclm.esi.iso2.banco20193capas.exceptions.ClienteNoEncontradoException;
+import edu.uclm.esi.iso2.banco20193capas.exceptions.CuentaYaCreadaException;
 import edu.uclm.esi.iso2.banco20193capas.exceptions.ImporteInvalidoException;
 import edu.uclm.esi.iso2.banco20193capas.exceptions.PinInvalidoException;
 import edu.uclm.esi.iso2.banco20193capas.exceptions.SaldoInsuficienteException;
@@ -72,15 +75,15 @@ public class TestCards extends TestCase {
     @Test
     public void testTDComprarPorInternet() {
         double saldoAntiguo = cuentaAna.getSaldo();
-        
+        double importe = cuentaAna.getSaldo()-2;
         try {
-            int token = tdAna.comprarPorInternet(1234, 500);
+            int token = tdAna.comprarPorInternet(1234, importe);
             tdAna.confirmarCompraPorInternet(token);
         } catch (Exception e) {
             fail("Excepción inesperada: " + e);
         }
         
-        assertTrue(saldoAntiguo-500 == cuentaAna.getSaldo());
+        assertTrue(saldoAntiguo-importe == cuentaAna.getSaldo());
         
     }
     
@@ -131,7 +134,7 @@ public class TestCards extends TestCase {
 	@Test
 	public void testRetiradaCredito() {
 		try {
-			this.tcPepe.sacarDinero(tcPepe.getPin(), 100);
+			this.tcPepe.sacarDinero(tcPepe.getPin(), tcPepe.getCreditoDisponible()-2);
 		} catch (Exception e) {
 			fail("Unexpected Exception " + e);
 		}
@@ -140,7 +143,7 @@ public class TestCards extends TestCase {
 	@Test
 	public void testRetiradaCreditoSaldoInsuficiente() {
 		try {
-			this.tcPepe.sacarDinero(tcPepe.getPin(), 5000);
+			this.tcPepe.sacarDinero(tcPepe.getPin(), tcPepe.getCreditoDisponible()+2);
 			fail("Esperaba SaldoInsuficienteException");
 		} catch (SaldoInsuficienteException e) {
 		} catch (Exception e) {
@@ -158,6 +161,18 @@ public class TestCards extends TestCase {
 			fail("Unexpected Exception " + e);
 		}
 	}
+	
+	@Test
+    public void testIngresarCantidadNegativa() {
+        try {
+            this.cuentaPepe.ingresar(-1000);
+            fail("Esperaba ImporteInvalidoException");
+        } catch (ImporteInvalidoException e) {
+        } catch (Exception e) {
+            fail("Esperaba ImporteInvalidoException");
+        } 
+    }
+	
 }
 
     
