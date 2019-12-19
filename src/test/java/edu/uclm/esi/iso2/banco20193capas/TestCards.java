@@ -88,6 +88,15 @@ public class TestCards extends TestCase {
     }
     
     @Test
+    public void testTDCambiarPINValido() {
+        try {
+            tdAna.cambiarPin(tdAna.getPin(), 1235);
+        } catch (Exception e) {
+        	fail("Excepción inesperada: " + e);
+        }
+    }
+    
+    @Test
     public void testTDCambiarPINInvalido() {
         try {
             tdAna.cambiarPin(0, 1235);
