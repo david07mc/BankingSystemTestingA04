@@ -209,7 +209,7 @@ public class TestCuenta extends TestCase {
 			fail("Excepción inesperada: " + e.getMessage());
 		}
 	}
-
+	@Test
 	public void testWrongInternet() {
 		Cliente pepe = new Cliente("123X", "Pepe", "Perez");
 		pepe.insert();
