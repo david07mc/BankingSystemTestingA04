@@ -12,14 +12,15 @@ import javax.persistence.ManyToOne;
  */
 @Entity
 public class MovimientoCuenta {
-	@Id @GeneratedValue(strategy = GenerationType.AUTO) 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	@ManyToOne
 	private Cuenta cuenta;
-	
+
 	private double importe;
 	private String concepto;
-	
+
 	public MovimientoCuenta() {
 	}
 

@@ -12,15 +12,16 @@ import javax.persistence.ManyToOne;
  */
 @Entity
 public class MovimientoTarjetaCredito {
-	@Id @GeneratedValue(strategy = GenerationType.AUTO) 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	@ManyToOne
 	private TarjetaCredito tarjeta;
-	
+
 	private double importe;
 	private String concepto;
 	private boolean liquidado;
-	
+
 	public MovimientoTarjetaCredito() {
 	}
 
@@ -69,6 +70,5 @@ public class MovimientoTarjetaCredito {
 	public void setLiquidado(boolean liquidado) {
 		this.liquidado = liquidado;
 	}
-	
-	
+
 }

@@ -11,20 +11,20 @@ public class Lanzadora {
 
 	public static void main(String[] args) throws Exception {
 		SpringApplication.run(Lanzadora.class, args);
-		
+
 		try {
 			Cliente pepe = new Cliente("12345X", "Pepe", "Pérez");
 			pepe.insert();
-			
+
 			Cuenta cuenta = new Cuenta();
 			cuenta.addTitular(pepe);
 			cuenta.insert();
-			
+
 			cuenta.ingresar(1000);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 	}
 
 }
