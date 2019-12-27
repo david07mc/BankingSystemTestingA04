@@ -22,12 +22,20 @@ public class Manager {
 	private static ClienteDAO clienteDAO;
 	private static TarjetaDebitoDAO tarjetaDebitoDAO;
 	private static TarjetaCreditoDAO tarjetaCreditoDAO;
-	
-	private Manager() {	}
-	
+
+	private Manager() {
+	}
+
 	@Autowired
-	private void loadDAO(CuentaDAO cuentaDao, MovimientoCuentaDAO movimientoDao, 
-			ClienteDAO clienteDAO, MovimientoTarjetaCreditoDAO movimientoTCDAO, TarjetaDebitoDAO tarjetaDebitoDAO,
+	public void loadDAO(CuentaDAO cuentaDao, MovimientoCuentaDAO movimientoDao, ClienteDAO clienteDAO,
+			MovimientoTarjetaCreditoDAO movimientoTCDAO, TarjetaDebitoDAO tarjetaDebitoDAO,
+			TarjetaCreditoDAO tarjetaCreditoDAO) {
+		setloadDAO(cuentaDao, movimientoDao, clienteDAO, movimientoTCDAO, tarjetaDebitoDAO, tarjetaCreditoDAO);
+
+	}
+
+	public static void setloadDAO(CuentaDAO cuentaDao, MovimientoCuentaDAO movimientoDao, ClienteDAO clienteDAO,
+			MovimientoTarjetaCreditoDAO movimientoTCDAO, TarjetaDebitoDAO tarjetaDebitoDAO,
 			TarjetaCreditoDAO tarjetaCreditoDAO) {
 		Manager.cuentaDAO = cuentaDao;
 		Manager.movimientoDAO = movimientoDao;
@@ -35,28 +43,29 @@ public class Manager {
 		Manager.movimientoTarjetaCreditoDAO = movimientoTCDAO;
 		Manager.tarjetaDebitoDAO = tarjetaDebitoDAO;
 		Manager.tarjetaCreditoDAO = tarjetaCreditoDAO;
+
 	}
-	
+
 	public static CuentaDAO getCuentaDAO() {
 		return cuentaDAO;
 	}
-	
+
 	public static MovimientoCuentaDAO getMovimientoDAO() {
 		return movimientoDAO;
 	}
-	
+
 	public static ClienteDAO getClienteDAO() {
 		return clienteDAO;
 	}
-	
+
 	public static MovimientoTarjetaCreditoDAO getMovimientoTarjetaCreditoDAO() {
 		return movimientoTarjetaCreditoDAO;
 	}
-	
+
 	public static TarjetaDebitoDAO getTarjetaDebitoDAO() {
 		return tarjetaDebitoDAO;
 	}
-	
+
 	public static TarjetaCreditoDAO getTarjetaCreditoDAO() {
 		return tarjetaCreditoDAO;
 	}

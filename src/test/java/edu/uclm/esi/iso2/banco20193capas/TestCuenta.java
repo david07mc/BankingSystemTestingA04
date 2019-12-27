@@ -209,6 +209,7 @@ public class TestCuenta extends TestCase {
 			fail("Excepción inesperada: " + e.getMessage());
 		}
 	}
+
 	@Test
 	public void testWrongInternet() {
 		Cliente pepe = new Cliente("123X", "Pepe", "Perez");
@@ -249,9 +250,9 @@ public class TestCuenta extends TestCase {
 		} catch (Exception e) {
 			fail("Unexpected Exception " + e);
 		}
-		for (int i = 0; i<3; i++) {
+		for (int i = 0; i < 3; i++) {
 			try {
-				tcPepe.sacarDinero(tcPepe.getPin()+1, 100);
+				tcPepe.sacarDinero(tcPepe.getPin() + 1, 100);
 				fail("Esperaba PinInvalidoException");
 			} catch (PinInvalidoException e) {
 			} catch (Exception e) {

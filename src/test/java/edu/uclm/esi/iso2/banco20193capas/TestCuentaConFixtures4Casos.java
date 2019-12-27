@@ -145,16 +145,17 @@ public class TestCuentaConFixtures4Casos extends TestCase {
 			fail("Esperaba TarjetaBloqueadaException");
 		}
 	}
+
 	@Test
 	public void testLongOperationWithCreditCard() {
 		try {
 			int token = this.tcPepe.comprarPorInternet(1234, 1000000);
 			fail("SaldoInsuficienteError is expected and not thrown");
-		} catch(SaldoInsuficienteException e) {
+		} catch (SaldoInsuficienteException e) {
 
-		}catch (Exception e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			fail("Esperaba SaldoInsuficienteError"+e);
+			fail("Esperaba SaldoInsuficienteError" + e);
 		}
 		try {
 			int token = this.tcPepe.comprarPorInternet(7777, 500);
@@ -163,20 +164,16 @@ public class TestCuentaConFixtures4Casos extends TestCase {
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			fail("PintInvalidoException is espected"+e);
+			fail("PintInvalidoException is espected" + e);
 		}
 		try {
 			int token = this.tcPepe.comprarPorInternet(1234, 500);
 			this.tcPepe.confirmarCompraPorInternet(token);
-			assertTrue(this.tcPepe.getCreditoDisponible()==2000-500);
+			assertTrue(this.tcPepe.getCreditoDisponible() == 2000 - 500);
 		} catch (Exception e) {
-			fail("Unexpected exception: "+e);
-		} 
-
-
-
+			fail("Unexpected exception: " + e);
+		}
 
 	}
-
 
 }
