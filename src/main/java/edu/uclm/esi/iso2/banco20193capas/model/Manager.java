@@ -35,8 +35,7 @@ public class Manager {
 	}
 
 	public static void setloadDAO(CuentaDAO cuentaDao, MovimientoCuentaDAO movimientoDao, ClienteDAO clienteDAO,
-			MovimientoTarjetaCreditoDAO movimientoTCDAO, TarjetaDebitoDAO tarjetaDebitoDAO,
-			TarjetaCreditoDAO tarjetaCreditoDAO) {
+			MovimientoTarjetaCreditoDAO movimientoTCDAO, TarjetaDebitoDAO tarjetaDebitoDAO,TarjetaCreditoDAO tarjetaCreditoDAO) {
 		Manager.cuentaDAO = cuentaDao;
 		Manager.movimientoDAO = movimientoDao;
 		Manager.clienteDAO = clienteDAO;
